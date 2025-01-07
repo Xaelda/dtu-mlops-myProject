@@ -9,6 +9,7 @@ from model import BaselineModel
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
+# This is a comment that is different from the one in the remote repo
 app = typer.Typer()
 
 @app.command()
