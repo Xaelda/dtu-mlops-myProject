@@ -1,7 +1,6 @@
 import torch
 from torch import nn
 
-
 class BaselineModel(nn.Module):
     """ A simple baseline model that we will continue to develop during the course.
 
@@ -44,7 +43,8 @@ if __name__ == "__main__":
     print(f"Model architecture: {model}")
     print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
 
-    print("Testing model with dummy input")
-    dummy_input = torch.randn(1, 1, 28, 28)
-    output = model(dummy_input)
-    print(f"Output: {output.shape}")
+    # This test will be carried out in the CI pipeline in tests/test_model.py
+    # print("Testing model with dummy input")
+    # dummy_input = torch.randn(1, 1, 28, 28)
+    # output = model(dummy_input)
+    # print(f"Output: {output.shape}")

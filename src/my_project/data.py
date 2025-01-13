@@ -36,8 +36,8 @@ class MyDataset(Dataset):
 
         train_images, train_target = [], []
         for i in range(6):
-            train_images.append(torch.load(self.raw_data_path.joinpath("train_images_{i}.pt")))
-            train_target.append(torch.load(self.raw_data_path.joinpath("train_target_{i}.pt")))
+            train_images.append(torch.load(self.raw_data_path.joinpath(f"train_images_{i}.pt")))
+            train_target.append(torch.load(self.raw_data_path.joinpath(f"train_target_{i}.pt")))
 
         # Concatenate the lists to create a single tensor with torch.cat
         train_images = torch.cat(train_images)

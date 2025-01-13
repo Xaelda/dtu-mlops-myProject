@@ -6,17 +6,18 @@ import typer
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 
-from my_project.models import model
+from my_project.model import BaselineModel
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
+#DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
 MODEL_PATH = Path("models")
 PROCESSED_DATA_PATH = Path("data/processed")
 REPORTS_PATH = Path("reports")
 
-def load_pretrained_model(model_checkpoint: str) -> torch.nn.Module:
+def load_pretrained_model(model_checkpoint: str = MODEL_PATH.joinpath("model.pth")) -> torch.nn.Module:
     """Load a trained model."""
-    model = model.to(DEVICE)
+    #model = BaselineModel().to(DEVICE)
+    model = BaselineModel()
     model.load_state_dict(torch.load(model_checkpoint))
     return model
 
@@ -35,10 +36,10 @@ def visualize(figure_name: str = "embeddings.png") -> None:
   embeddings, targets = [], []
   with torch.inference_mode():
     for batch in torch.utils.data.DataLoader(test_dataset, batch_size=32):
-      images, targets = batch
+      images, target = batch
       predictions = model(images)
-      embeddings.append(predictions.to(DEVICE))
-      targets.append(targets)
+      embeddings.append(predictions)
+      targets.append(target)
     embeddings = torch.cat(embeddings).numpy()
     targets = torch.cat(targets).numpy()
 

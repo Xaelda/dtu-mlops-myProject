@@ -30,3 +30,9 @@ line-length = 120
 
 [tool.coverage.run]
 omit = ["tests/*"]
+
+[project.scripts]
+train = "my_project.train:train"
+evaluate = "my_project.evaluate:evaluate"
+visualize = "my_project.visualize:visualize"
+preprocess_data = "my_project.data:preprocess"
