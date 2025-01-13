@@ -10,6 +10,7 @@ import pytest
 
 _PATH_DATA = Path(_PATH_DATA)
 
+@pytest.mark.skipif(not os.path.exists(_PATH_DATA.joinpath("raw")), reason="Data files not found")
 def test_my_dataset():
     """Test the MyDataset class."""
     dataset = MyDataset(_PATH_DATA.joinpath("raw"))
@@ -23,6 +24,14 @@ testdata = [
 ]
 
 # @pytest.mark.parametrize("output_folder", [None, "processed"])
+
+@pytest.mark.skipif(
+    not (
+        _PATH_DATA.joinpath("processed/train_data_processed.pt").exists() and
+        _PATH_DATA.joinpath("processed/test_data_processed.pt").exists()
+    ),
+    reason="Required data files (train_data_processed.pt or test_data_processed.pt) not found"
+)
 @pytest.mark.parametrize("N_train,N_test,train_shape,test_shape", testdata)
 def test_load_processed_data(N_train, N_test, train_shape, test_shape):
     train, test = load_processed_data(_PATH_DATA.joinpath("processed"))
