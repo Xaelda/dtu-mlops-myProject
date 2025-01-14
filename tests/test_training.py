@@ -11,4 +11,6 @@ def test_train(mocker):
   train(lr=1e-3, batch_size=32, epochs=1, print_every=100)
   torch.save.assert_called_once()
 
+if __name__ == "__main__":
+  test_train()
 
