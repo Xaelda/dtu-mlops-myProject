@@ -6,7 +6,7 @@ steps:
     '.',
     '-t',
     'europe-west1-docker.pkg.dev/dtumlops-447807/dtumlops-artifact-repo/dtumlops-docker-img',
-    '-f'
+    '-f',
     'cloud/example/cloud.dockerfile'
   ]
 - name: 'gcr.io/cloud-builders/docker'
