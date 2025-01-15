@@ -5,7 +5,7 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/dtumlops-artifact-repo/dtumlops-docker-img',
+    'europe-west1-docker.pkg.dev/dtumlops-477807/dtumlops-artifact-repo/dtumlops-docker-img',
     '-f',
     '~/Documents/Studie/main/kurser/08_Fall_2024/02476_MLOps/my_project/dtu-mlops-myProject/cloud/example/cloud.dockerfile'
   ]
@@ -13,7 +13,7 @@ steps:
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/dtumlops-artifact-repo/dtumlops-docker-img'
+    'europe-west1-docker.pkg.dev/dtumlops-477807/dtumlops-artifact-repo/dtumlops-docker-img'
   ]
 options:
   logging: CLOUD_LOGGING_ONLY
