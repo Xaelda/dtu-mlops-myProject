@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build container image'
+  args: [
+    'build',
+    '.',
+    '-t',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/dtumlops-artifact-repo/dtumlops-docker-img',
+    '-f',
+    '~/Documents/Studie/main/kurser/08_Fall_2024/02476_MLOps/gcloud_artifacts/dockerfile.dockerfile'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push container image'
+  args: [
+    'push',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/dtumlops-artifact-repo/dtumlops-docker-img'
+  ]
+options:
+  logging: CLOUD_LOGGING_ONLY
