@@ -5,15 +5,15 @@ steps:
     'build',
     '.',
     '-t',
-    'europe-west1-docker.pkg.dev/dtumlops-477807/dtumlops-artifact-repo/dtumlops-docker-img',
-    '-f',
+    'europe-west1-docker.pkg.dev/dtumlops-447807/dtumlops-artifact-repo/dtumlops-docker-img',
+    '-f'
     'cloud/example/cloud.dockerfile'
   ]
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Push container image'
   args: [
     'push',
-    'europe-west1-docker.pkg.dev/dtumlops-477807/dtumlops-artifact-repo/dtumlops-docker-img'
+    'europe-west1-docker.pkg.dev/dtumlops-447807/dtumlops-artifact-repo/dtumlops-docker-img'
   ]
 options:
   logging: CLOUD_LOGGING_ONLY
